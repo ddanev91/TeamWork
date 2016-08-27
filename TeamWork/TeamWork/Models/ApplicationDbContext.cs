@@ -10,6 +10,8 @@ namespace TeamWork.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+       
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
@@ -19,5 +21,9 @@ namespace TeamWork.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<TeamWork.Models.Post> Posts { get; set; }
+
+        public System.Data.Entity.DbSet<TeamWork.Models.Gallery> Galleries { get; set; }
     }
 }
