@@ -1,4 +1,5 @@
-﻿@model IEnumerable<TeamWork.Models.Post>
+﻿@using TeamWork.Classes
+@model IEnumerable<TeamWork.Models.Post>
 
 @{
     ViewBag.Title = "Index";
@@ -18,6 +19,9 @@
             @Html.DisplayNameFor(model => model.Body)
         </th>
         <th>
+            Author
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Date)
         </th>
         <th></th>
@@ -29,7 +33,17 @@
             @Html.DisplayFor(modelItem => item.Title)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Body)
+            @Utils.CutText(item.Body)
+        </td>
+        <td>
+            @if (item.Author != null)
+            {
+                @item.Author.UserName
+            }
+            else
+            {
+                @:(No Author)
+          }
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Date)
